@@ -1,0 +1,27 @@
+.img-select{
+  // height:100vh;
+  .edit-button{
+    position: relative;
+    top: 50px;
+    left: 150px;
+    z-index: 12;
+    background-color: rebeccapurple;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 60px;
+  }
+  .img-wrapper{
+    position:relative;
+    overflow:hidden;
+    border-radius:50%;
+    height:200px;
+    width:200px;
+    margin:1em;
+    background-color: red;
+      .img{
+        width:auto;
+        height:100%;
+      }
+  }
+}

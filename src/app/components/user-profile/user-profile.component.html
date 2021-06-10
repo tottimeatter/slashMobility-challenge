@@ -1,0 +1,32 @@
+<mat-card>
+  <app-img-select (imageSet)="setUserImage($event)"></app-img-select>
+
+  <mat-card-content>
+
+    <form class="form" [formGroup]="userInfoControl" (ngSubmit)="validateForm()">
+      <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" placeholder="Username">
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
+
+      <mat-radio-group formControlName="gender">
+        <mat-label>Gender</mat-label>
+        <mat-radio-button value="Male">Male</mat-radio-button>
+        <mat-radio-button value="Female">Female</mat-radio-button>
+        <mat-radio-button value="Other">Other</mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field>
+        <mat-label>Bio</mat-label>
+        <textarea matInput placeholder="Bio" formControlName="bio"></textarea>
+      </mat-form-field>
+
+      <button mat-button type="submit" value="Save">Save</button>
+    </form>
+  </mat-card-content>
+</mat-card>
