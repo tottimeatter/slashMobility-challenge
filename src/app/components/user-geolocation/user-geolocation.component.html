@@ -1,1 +1,7 @@
-<p>user-geolocation works!</p>
+<mat-card class="card">
+  <google-map [center]="center" [zoom]="zoom" width="100%">
+    <map-marker [position]="marker.position" [label]="marker.label" [title]="marker.title" [options]="marker.options">
+    </map-marker>
+  </google-map>
+  <button mat-button (click)="getLocation()">GET MY LOCATION</button>
+</mat-card>

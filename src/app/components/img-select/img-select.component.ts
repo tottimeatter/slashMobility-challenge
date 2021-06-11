@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { environment as env } from 'src/environments/environment';
 
 @Component({
   selector: 'app-img-select',
@@ -12,7 +13,7 @@ export class ImgSelectComponent implements OnInit {
   @Output() imageSet = new EventEmitter();
 
   imgURL="";
-  default = "";
+  default = env.defaultUserIMG;
 
   ngOnInit(): void {
   }

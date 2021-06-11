@@ -1,0 +1,22 @@
+.page{
+  background-color: #eee;
+  min-height: 100vh;
+  .header{
+    height:50px;
+    background-color: lightskyblue;
+    color:white;
+  }
+  .content{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding:1em;
+    // All childs
+    & > *{
+      flex-grow: 1;
+      margin: 0.5em;
+    }
+    // app-user-profile, app-user-geolocation{
+    // }
+  }
+}
