@@ -1,7 +1,7 @@
 <mat-card class="card">
-  <google-map [center]="center" [zoom]="zoom" width="100%">
-    <map-marker [position]="marker.position" [label]="marker.label" [title]="marker.title" [options]="marker.options">
-    </map-marker>
-  </google-map>
-  <button mat-button (click)="getLocation()">GET MY LOCATION</button>
+  <div id="map"></div> <!--width="100%">-->
+    <!-- <map-marker [position]="marker.position" [label]="marker.label" [title]="marker.title" [options]="marker.options">
+    </map-marker> -->
+    <!-- <map-marker></map-marker> -->
+  <button class="button" mat-button (click)="getLocation()">GET MY LOCATION <img [src]="location_icon"></button>
 </mat-card>

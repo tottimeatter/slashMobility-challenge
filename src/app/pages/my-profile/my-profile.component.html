@@ -4,7 +4,7 @@
     <span class="title">Slash My Profile</span>
   </div>
   <div class="content">
-    <app-user-profile></app-user-profile>
+    <app-user-profile (newUser)="setUser($event)"></app-user-profile>
     <app-user-geolocation></app-user-geolocation>
   </div>
 </div>

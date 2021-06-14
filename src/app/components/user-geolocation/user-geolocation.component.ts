@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MapMarker } from '@angular/google-maps';
+import { environment } from 'src/environments/environment';
 
-class marker{
-  position: any;
-  label: any;
-  options: any;
-  title: any;
-}
 
 @Component({
   selector: 'app-user-geolocation',
@@ -19,27 +13,66 @@ export class UserGeolocationComponent implements OnInit {
 
   constructor() { }
 
-  center = {lat: 24, lng: 12};
+  center = {lat: 0, lng: 0};
   zoom = 15;
-  display?: google.maps.LatLngLiteral;
 
-  marker: marker = new marker;
+  map: google.maps.Map
+  marker: google.maps.Marker
+  infoWindow: google.maps.InfoWindow;
+
+  location_icon = environment.location_icon
 
   ngOnInit(): void {
     this.getLocation();
   }
 
+  /**
+   * Gets location from browser and updates the marker
+   */
   getLocation(): void {
     navigator.geolocation.getCurrentPosition((r)=>{
       this.center = {
         lat: r.coords.latitude,
         lng: r.coords.longitude
       }
+      this.initMap();
+    })
 
-      this.marker.position = this.center;
-      this.marker.label = {color: 'white', text: "Current position"};
-      this.marker.title = "Current position";
-      this.marker.options = {animation: google.maps.Animation.DROP};
+  }
+  /**
+   * Initialize map and marker
+   */
+  initMap(){
+    // Init map
+    this.map = new google.maps.Map(
+      document.getElementById("map") as HTMLElement,
+      {
+        center: this.center,
+        zoom: this.zoom,
+      }
+    )
+    //Init marker
+    this.marker = new google.maps.Marker({
+      position:this.center,
+      map: this.map,
+      // label:{color: 'white', text: "Current position"},
+      title:"Current position",
+      animation: google.maps.Animation.DROP
+    })
+    //Init infowindow
+    this.infoWindow = new google.maps.InfoWindow({
+      content: `<div>
+                  <span style="font-weight:bold">Latitude</span>
+                  <span>${this.center.lat}</span>
+                </div>
+                <div>
+                  <span style="font-weight:bold">Longitude</span>
+                  <span>${this.center.lng}</span>
+                </div>`
+    })
+
+    this.marker.addListener("click", ()=> {
+      this.infoWindow.open(this.map, this.marker)
     })
   }
 

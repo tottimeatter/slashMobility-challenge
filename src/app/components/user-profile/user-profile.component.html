@@ -9,15 +9,24 @@
       <div class="header-background white"></div>
     </div>
 
-    <form class="form" [formGroup]="userInfoControl" (ngSubmit)="validateForm()">
+    <form class="form" [formGroup]="userInfoControl" (ngSubmit)="submitForm()">
       <mat-form-field>
         <mat-label>Username</mat-label>
         <input matInput formControlName="username" placeholder="Username">
+        <mat-error *ngIf="userInfoControl.controls['username'].hasError('required')">
+          Username is required
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Email</mat-label>
         <input matInput placeholder="Email" formControlName="email">
+        <mat-error *ngIf="userInfoControl.controls['email'].hasError('required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="userInfoControl.controls['email'].hasError('email')">
+          Email format is incorrect
+        </mat-error>
       </mat-form-field>
 
       <div class="gender-radio">
@@ -34,7 +43,7 @@
         <textarea matInput placeholder="Bio" formControlName="bio"></textarea>
       </mat-form-field>
 
-      <button mat-button type="submit" value="Save">Save</button>
+      <button class="button" mat-button type="submit" value="Save" [disabled]="!userInfoControl.valid">SAVE</button>
     </form>
   </mat-card-content>
 </mat-card>

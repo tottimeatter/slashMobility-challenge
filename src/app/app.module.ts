@@ -14,7 +14,7 @@ import {MatInputModule} from '@angular/material/input'
 import {MatRadioModule} from '@angular/material/radio'
 import {MatFormFieldModule} from '@angular/material/form-field/'
 import {ReactiveFormsModule} from '@angular/forms'
-
+import { HttpClientModule } from '@angular/common/http';
 import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
@@ -34,9 +34,10 @@ import { GoogleMapsModule } from '@angular/google-maps';
     MatRadioModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

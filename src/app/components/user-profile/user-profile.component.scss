@@ -23,15 +23,13 @@
   .form{
     display:flex;
     flex-wrap:wrap;
-    justify-content:space-between;
-    // flex-direction:column;
-    // max-width:500px;
+    justify-content:flex-end;
     .gender-radio{
       display:flex;
       flex-direction:column;
-      width:50%;
+      width:100%;
       mat-radio-group{
-        width: 100%;
+        width: 50%;
         display:flex;
         justify-content:space-between;
         padding-top:1em;

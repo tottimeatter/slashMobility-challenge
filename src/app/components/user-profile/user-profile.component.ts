@@ -1,15 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
-
-class user {
-  constructor(){}
-
-  userName: string;
-  image: string;
-  email: string;
-  gender: string;
-  bio: string
-}
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {User} from 'src/app/model/model'
 
 @Component({
   selector: 'app-user-profile',
@@ -21,23 +12,25 @@ class user {
 export class UserProfileComponent implements OnInit {
 
   constructor() { }
+
+  @Output() newUser = new EventEmitter();
+
   // Logic user object
-  userInfo: user = new user;
+  userInfo: User = new User;
   // Form controller
   userInfoControl = new FormGroup({
-    username: new FormControl(),
-    email: new FormControl(),
+    username: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
     gender: new FormControl(),
     bio: new FormControl()
   });
 
   ngOnInit(): void {
   }
-
   /**
-   * User info form validation
+   * User info form submit
    */
-  validateForm(): void{
+  submitForm(): void{
     this.userInfo = {
       image: this.userInfo.image,
       userName: this.userInfoControl.value.username,
@@ -46,6 +39,7 @@ export class UserProfileComponent implements OnInit {
       bio: this.userInfoControl.value.bio
     }
     console.log(this.userInfo);
+    this.newUser.emit(this.userInfo);
   }
 
   /**
