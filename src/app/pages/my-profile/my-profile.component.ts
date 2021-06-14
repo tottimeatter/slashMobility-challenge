@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment as env} from 'src/environments/environment';
 
 @Component({
   selector: 'app-my-profile',
@@ -8,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 export class MyProfileComponent implements OnInit {
 
   constructor() { }
+
+  touch_icon = env.touch_icon;
 
   ngOnInit(): void {
   }

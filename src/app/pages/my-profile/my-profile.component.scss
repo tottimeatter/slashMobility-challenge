@@ -5,6 +5,13 @@
     height:50px;
     background-color: lightskyblue;
     color:white;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    .touch{
+      position:absolute;
+      left:1em;
+    }
   }
   .content{
     display:flex;
@@ -16,7 +23,5 @@
       flex-grow: 1;
       margin: 0.5em;
     }
-    // app-user-profile, app-user-geolocation{
-    // }
   }
 }

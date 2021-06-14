@@ -1,5 +1,5 @@
 <div class="img-select">
-  <button mat-button class="edit-button" (click)="editImage()">Edit</button>
+  <div class="edit-button" (click)="editImage()" *ngIf="imgURL"><img [src]="edit_icon"></div>
   <input #imageInput
   id="imageInput"
   style="display:none;"
@@ -7,6 +7,6 @@
   accept="image/*"
   (change)="processFile(imageInput)">
   <div class="img-wrapper">
-    <img class="img" [src]="imgURL ? imgURL : default">
+    <img class="img" [src]="imgURL ? imgURL : default" (click)="!imgURL ? editImage() : null">
   </div>
 </div>

@@ -21,9 +21,9 @@ class user {
 export class UserProfileComponent implements OnInit {
 
   constructor() { }
-
+  // Logic user object
   userInfo: user = new user;
-
+  // Form controller
   userInfoControl = new FormGroup({
     username: new FormControl(),
     email: new FormControl(),
@@ -34,8 +34,10 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * User info form validation
+   */
   validateForm(): void{
-    // debugger
     this.userInfo = {
       image: this.userInfo.image,
       userName: this.userInfoControl.value.username,
@@ -46,6 +48,10 @@ export class UserProfileComponent implements OnInit {
     console.log(this.userInfo);
   }
 
+  /**
+   * Set user image
+   * @param e EvenEmiter event
+   */
   setUserImage(e){
     console.log(e)
     this.userInfo.image = e;
